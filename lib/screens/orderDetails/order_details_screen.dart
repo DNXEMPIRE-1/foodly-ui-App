@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-
-import '../../components/buttons/primary_button.dart';
+import 'package:foodly_ui/components/buttons/primary_button.dart';
+import 'package:foodly_ui/screens/home/home_screen.dart';
 import '../../constants.dart';
-import 'components/order_item_card.dart';
-import 'components/price_row.dart';
-import 'components/total_price.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
-  const OrderDetailsScreen({super.key});
+  const OrderDetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,30 +18,23 @@ class OrderDetailsScreen extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: defaultPadding),
-              // List of cart items
-              ...List.generate(
-                demoItems.length,
-                (index) => Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: defaultPadding / 2),
-                  child: OrderedItemCard(
-                    title: demoItems[index]["title"],
-                    description:
-                        "Shortbread, chocolate turtle cookies, and red velvet.",
-                    numOfItem: demoItems[index]["numOfItem"],
-                    price: demoItems[index]["price"].toDouble(),
-                  ),
-                ),
+              // Placeholder for future order summary
+              Text(
+                "Your order details will be displayed here.",
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
-              const PriceRow(text: "Subtotal", price: 28.0),
-              const SizedBox(height: defaultPadding / 2),
-              const PriceRow(text: "Delivery", price: 0),
-              const SizedBox(height: defaultPadding / 2),
-              const TotalPrice(price: 20),
               const SizedBox(height: defaultPadding * 2),
               PrimaryButton(
-                text: "Checkout (\$20.10)",
-                press: () {},
+                text: "Continue Shopping",
+                press: () {
+                  // Navigate to the home screen and replace the current screen
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(),
+                    ),
+                  );
+                },
               ),
             ],
           ),
@@ -53,21 +43,3 @@ class OrderDetailsScreen extends StatelessWidget {
     );
   }
 }
-
-const List<Map> demoItems = [
-  {
-    "title": "Cookie Sandwich",
-    "price": 7.4,
-    "numOfItem": 1,
-  },
-  {
-    "title": "Combo Burger",
-    "price": 12,
-    "numOfItem": 1,
-  },
-  {
-    "title": "Oyster Dish",
-    "price": 8.6,
-    "numOfItem": 2,
-  },
-];

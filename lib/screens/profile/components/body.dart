@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foodly_ui/constants.dart';
+import 'package:foodly_ui/screens/auth/sign_in_screen.dart';
+import 'package:foodly_ui/screens/profile/order_history_screen.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -18,46 +21,36 @@ class Body extends StatelessWidget {
               Text("Account Settings",
                   style: Theme.of(context).textTheme.headlineMedium),
               Text(
-                "Update your settings like notifications, payments, profile edit etc.",
+                "Update your order details.",
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(height: 16),
               ProfileMenuCard(
-                svgSrc: "assets/icons/profile.svg",
-                title: "Profile Information",
-                subTitle: "Change your account information",
-                press: () {},
-              ),
-              ProfileMenuCard(
-                svgSrc: "assets/icons/lock.svg",
-                title: "Change Password",
-                subTitle: "Change your password",
-                press: () {},
-              ),
-              ProfileMenuCard(
-                svgSrc: "assets/icons/card.svg",
-                title: "Payment Methods",
-                subTitle: "Add your credit & debit cards",
-                press: () {},
-              ),
-              ProfileMenuCard(
-                svgSrc: "assets/icons/marker.svg",
-                title: "Locations",
-                subTitle: "Add or remove your delivery locations",
-                press: () {},
-              ),
-              ProfileMenuCard(
-                svgSrc: "assets/icons/fb.svg",
-                title: "Add Social Account",
-                subTitle: "Add Facebook, Twitter etc ",
-                press: () {},
+                svgSrc: "assets/icons/order.svg",
+                title: "Your order history",
+                subTitle: "Track food delivery status.",
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => OrderHistoryScreen(),
+                    ),
+                  );
+                },
               ),
               ProfileMenuCard(
                 svgSrc: "assets/icons/share.svg",
-                title: "Refer to Friends",
-                subTitle: "Get \$10 for reffering friends",
-                press: () {},
-              ),
+                title: "Logout",
+                subTitle: "click here when you want logout",
+                press: () async {
+                  await FirebaseAuth.instance.signOut();
+
+                  if (!context.mounted) return;
+                  Route route = MaterialPageRoute(
+                      builder: (context) => const SignInScreen());
+                  Navigator.pushReplacement(context, route);
+                },
+              )
             ],
           ),
         ),

@@ -24,7 +24,7 @@ class PriceRange extends StatelessWidget {
               const SizedBox(width: defaultPadding),
               ...List.generate(
                 // For demo i'm using length 5
-                5, // Price limit
+                0, // Price limit
                 (index) => Padding(
                   padding: const EdgeInsets.only(right: defaultPadding),
                   child: RoundedButton(

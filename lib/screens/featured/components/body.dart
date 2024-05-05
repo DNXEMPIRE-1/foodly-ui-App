@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:foodly_ui/screens/details/details_screen.dart';
 import '../../../components/cards/big/restaurant_info_big_card.dart';
 import '../../../components/scalton/big_card_scalton.dart';
 import '../../../constants.dart';
 
 import '../../../demoData.dart';
 
-/// Just for show the scalton we use [StatefulWidget]
 class Body extends StatefulWidget {
-  const Body({super.key});
+  const Body({Key? key}) : super(key: key);
 
   @override
   _BodyState createState() => _BodyState();
@@ -33,21 +33,26 @@ class _BodyState extends State<Body> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
         child: ListView.builder(
-          // while we dont have our data bydefault we show 3 scalton
           itemCount: isLoading ? 3 : demoDataLength,
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.only(bottom: defaultPadding),
             child: isLoading
                 ? const BigCardScalton()
                 : RestaurantInfoBigCard(
-                    // Images are List<String>
                     images: demoBigImages..shuffle(),
-                    name: "McDonald's",
-                    rating: 4.3,
-                    numOfRating: 200,
-                    deliveryTime: 25,
-                    foodType: const ["Chinese", "American", "Deshi food"],
-                    press: () {},
+                    name: demoMediumCardData[index]["name"],
+                    rating: demoMediumCardData[index]["rating"],
+                    numOfRating: demoMediumCardData[index]["numOfRating"],
+                    deliveryTime: demoMediumCardData[index]["deliveryTime"],
+                    foodType: demoMediumCardData[index]["foodType"],
+                    press: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DetailsScreen(),
+                        ),
+                      );
+                    },
                   ),
           ),
         ),

@@ -104,7 +104,7 @@ class _BodyState extends State<Body> {
         style: Theme.of(context).textTheme.labelLarge,
         textInputAction: TextInputAction.search,
         decoration: InputDecoration(
-          hintText: "Search on foodly",
+          hintText: "Search on HiwKai",
           contentPadding: kTextFieldPadding,
           prefixIcon: Padding(
             padding: const EdgeInsets.all(8.0),

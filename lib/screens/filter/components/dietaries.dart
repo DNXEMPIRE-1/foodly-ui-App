@@ -47,9 +47,6 @@ class _DietariesState extends State<Dietaries> {
   }
 
   List<Map<String, dynamic>> demoDietaries = [
-    {"title": "Any", "isActive": false},
-    {"title": "Vegetarian", "isActive": false},
-    {"title": "Vegan", "isActive": false},
-    {"title": "Gluten-Free", "isActive": false},
+    {"title": "Any", "isActive": false}
   ];
 }

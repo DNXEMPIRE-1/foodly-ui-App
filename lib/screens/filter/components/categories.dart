@@ -48,13 +48,6 @@ class _CategoriesState extends State<Categories> {
   // Demo data categories
   List<Map<String, dynamic>> demoCategories = [
     {"title": "All", "isActive": false},
-    {"title": "Brunch", "isActive": false},
-    {"title": "Dinner", "isActive": false},
-    {"title": "Burgers", "isActive": true},
-    {"title": "Chinese", "isActive": false},
-    {"title": "Pizza", "isActive": false},
-    {"title": "Salads", "isActive": false},
-    {"title": "Soups", "isActive": false},
-    {"title": "Breakfast", "isActive": false},
+    {"title": "Fried Chicken", "isActive": false}
   ];
 }
